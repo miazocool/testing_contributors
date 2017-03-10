@@ -1,14 +1,14 @@
-import Test from './components/Test.vue'
+import GithubCommits from './components/GithubCommits.vue'
 
 // Install the components
 export function install (Vue) {
-  Vue.component('test', Test)
+  Vue.component('github-commits', GithubCommits)
   /* -- Add more components here -- */
 }
 
 // Expose the components
 export {
-  Test,
+  GithubCommits,
   /* -- Add more components here -- */
 }
 

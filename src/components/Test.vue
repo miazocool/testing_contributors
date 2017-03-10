@@ -16,9 +16,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.test h1 {
-  color: #40b883;
-}
-</style>
