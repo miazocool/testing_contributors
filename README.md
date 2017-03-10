@@ -170,6 +170,9 @@ npm run build
 
 ---
 
+## Screenshot
+![](screenshot.jpg)
+
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
