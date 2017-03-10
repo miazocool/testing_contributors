@@ -1,4 +1,4 @@
-import GithubCommits from './components/GithubCommits.vue'
+import GithubCommits from './GithubCommits.vue'
 
 // Install the components
 export function install (Vue) {
