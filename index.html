@@ -21,16 +21,16 @@
     	<button id="get-snippet" style="font-size: 14px;">Show Commits</button>
 
     	<br>
-        <textarea id="snippet" rows="4" disabled></textarea>
+        <textarea id="snippet" rows="5" disabled placeholder="Embeddable-snippet will be shown here once you click the 'Show Commit' button"></textarea>
         <br>
 		<i style="color:gray;">You can copy above code and embed it in your page :)</i>
         <br>
 
-    	<iframe src="https://wzulfikar.github.io/vue-github-commits/embed.html?repo=wzulfikar/lab" scrolling="no" height="400" width="400" style="border: none;overflow-y: hidden;"></iframe>
+    	<iframe src="" scrolling="no" height="400" width="400" style="border: none;overflow-y: hidden;"></iframe>
     </div>
 
 	<script type="text/javascript">
-	const ENDPOINT = 'http://php.dev:8888/embed.html?repo=';
+	const ENDPOINT = 'https://wzulfikar.github.io/vue-github-commits/embed.html?repo=';
 	var iframe = document.getElementsByTagName('iframe')[0];
 	var snippet = document.getElementById('snippet');
 	var repoName = document.getElementById('repo-name');
@@ -39,8 +39,7 @@
 		iframe.src = ENDPOINT + repoName.value;
 		snippet.value = iframe.outerHTML;
 	});
-
-	snippet.value = iframe.outerHTML;
+	iframe.src = ENDPOINT + 'wzulfikar/vue-github-commits';
 	</script>
   </body>
 </html>
