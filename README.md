@@ -171,7 +171,7 @@ npm run build
 ---
 
 ## Screenshot
-![](screenshot.jpg)
+![](vue-github-commits-demo-screenshot.jpg)
 
 ## License
 
