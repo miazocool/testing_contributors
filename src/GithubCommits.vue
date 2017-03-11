@@ -1,12 +1,14 @@
 <template>
-<div id="vue-github-commits">
+<div id="vue-github-commits" style="margin: 1rem; text-align: center;">
+	<span v-if="!commits">Fetching github commits..</span>
+	<span v-if="error">Failed to fetch github commits for repository {{ githubRepo }}</span>
 	<template v-for="item in commits">
 		<div class="box commit">
 		<article class="media">
 		  <div class="media-left">
 		    <figure class="image is-48x48">
 		      <template v-if="item.author">
-				<a :href="item.author.html_url">
+				<a target="_blank" :href="item.author.html_url">
 				<img style="max-height: 100%" :src="item.author.avatar_url" alt="Image" class="rounded">
 				</a>
 		      </template>
@@ -15,11 +17,11 @@
 		  <div class="media-content">
 		    <div class="content commit-message">
 		      <p>
-		        <strong><a :href="item.html_url">{{ item.commit.message | truncate }}</a></strong>
+		        <strong><a target="_blank" :href="item.html_url">{{ item.commit.message | truncate }}</a></strong>
 		        <br>
 	        	<span class="committer">
 					<small v-if="item.author">
-						Committed by <a :href="item.author.html_url">{{ item.commit.author.name }}</a>
+						Committed by <a target="_blank" :href="item.author.html_url">{{ item.commit.author.name }}</a>
 					</small>
 					<small v-else>
 						Committed by {{ item.commit.author.name }}
@@ -53,6 +55,12 @@ export default {
 	  	required: false,
 	  	default: 'master',
 	  }
+	},
+
+	computed: {
+		githubRepo: function () {
+			return 'https://github.com/' + repo; 
+		}
 	},
 
 	data: function () {
@@ -97,6 +105,9 @@ export default {
 	      self.commits = JSON.parse(xhr.responseText)
 	      console.log(self.commits[0].html_url)
 	    }
+	    xhr.onerror = function () {
+	    	self.error = true
+	    }
 	    xhr.send()
 	  }
 	}
@@ -107,11 +118,8 @@ export default {
 @import 'assets/bulma.min.css'
 </style>
 
-<style>
-#vue-github-commits {
-	margin: 1rem;
-}
-#vue-github-commits .committer {
+<style scoped>
+.committer {
 	display: block;
 }
 .box:not(:last-child) {
