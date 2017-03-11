@@ -2,24 +2,45 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>vue-github-commits</title>
+    <title>Vue Github Commits</title>
+	<style type="text/css">
+	textarea#snippet {
+		width: 320px;
+		border: 1px solid gainsboro;
+		padding: 7px 9px;
+		font-size: 14px;
+		margin-top: 12px;
+		border-radius: 5px;
+	}
+	</style>
   </head>
   <body>
-    <div id="app">
-    </div>
-	
-	<link rel="stylesheet" type="text/css" href="/dist/vue-github-commits.css">
-    
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/2.0.5/timeago.min.js"></script>
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-	<script type="text/javascript" src="/dist/vue-github-commits.browser.js"></script>
-	<script type="text/javascript">
-	var repo = window.location.search.replace('?repo=', '') || 'wzulfikar/vue-github-commits';
-	document.getElementById('app').innerHTML = '<github-commits repo="' + repo + '"/>'
-	new Vue({
-		el: '#app'
-	})
-	</script>
+    <div style="text-align: center;">
+		
+    	<input id="repo-name" type="text" placeholder="Insert name of github repo" style="width: 200px;border-style: none;outline-style: none;border-bottom: 1px solid gainsboro;font-size: 14px;" autofocus>
+    	<button id="get-snippet" style="font-size: 14px;">Show Commits</button>
 
+    	<br>
+        <textarea id="snippet" rows="4" disabled></textarea>
+        <br>
+		<i style="color:gray;">You can copy above code and embed it in your page :)</i>
+        <br>
+
+    	<iframe src="http://php.dev:8888/embed.html?repo=wzulfikar/lab" scrolling="no" height="400" width="400" style="border: none;overflow-y: hidden;"></iframe>
+    </div>
+
+	<script type="text/javascript">
+	const ENDPOINT = 'http://php.dev:8888/embed.html?repo=';
+	var iframe = document.getElementsByTagName('iframe')[0];
+	var snippet = document.getElementById('snippet');
+	var repoName = document.getElementById('repo-name');
+	var btnGetSnippet = document.getElementById('get-snippet');
+	btnGetSnippet.addEventListener('click', function (evt) {
+		iframe.src = ENDPOINT + repoName.value;
+		snippet.value = iframe.outerHTML;
+	});
+
+	snippet.value = iframe.outerHTML;
+	</script>
   </body>
 </html>
