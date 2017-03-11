@@ -6,7 +6,6 @@
   </head>
   <body>
     <div id="app">
-    	<github-commits repo="wzulfikar/vue-github-commits"/>
     </div>
 	
 	<link rel="stylesheet" type="text/css" href="/dist/vue-github-commits.css">
@@ -15,6 +14,8 @@
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
 	<script type="text/javascript" src="/dist/vue-github-commits.browser.js"></script>
 	<script type="text/javascript">
+	var repo = window.location.search.replace('?repo=', '') || 'wzulfikar/vue-github-commits';
+	document.getElementById('app').innerHTML = '<github-commits repo="' + repo + '"/>'
 	new Vue({
 		el: '#app'
 	})
