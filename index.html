@@ -6,8 +6,19 @@
   </head>
   <body>
     <div id="app">
-    	<github-commits repo="wzulfikar/repo"/>
+    	<github-commits repo="wzulfikar/vue-github-commits"/>
     </div>
-    <script src="/dist/build.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="/dist/vue-github-commits.css">
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/2.0.5/timeago.min.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script type="text/javascript" src="/dist/vue-github-commits.browser.js"></script>
+	<script type="text/javascript">
+	new Vue({
+		el: '#app'
+	})
+	</script>
+
   </body>
 </html>
