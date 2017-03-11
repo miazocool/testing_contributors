@@ -7,9 +7,13 @@ A Vue.js Plugin
 
 ## Table of contents
 
+- [Generator](#generator)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Example](#example)
+
+# Generator
+Visit https://wzulfikar.github.io/vue-github-commits
 
 # Installation
 
