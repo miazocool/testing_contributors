@@ -1,13 +1,15 @@
 <template>
-<div id="github-commits">
+<div id="vue-github-commits">
 	<template v-for="item in commits">
 		<div class="box commit">
 		<article class="media">
 		  <div class="media-left">
 		    <figure class="image is-48x48">
-		      <a :href="item.author.html_url">
-		      <img style="max-height: 100%" :src="item.author.avatar_url" alt="Image" class="rounded">
-		      </a>
+		      <template v-if="item.author">
+				<a :href="item.author.html_url">
+				<img style="max-height: 100%" :src="item.author.avatar_url" alt="Image" class="rounded">
+				</a>
+		      </template>
 		    </figure>
 		  </div>
 		  <div class="media-content">
@@ -15,7 +17,14 @@
 		      <p>
 		        <strong><a :href="item.html_url">{{ item.commit.message | truncate }}</a></strong>
 		        <br>
-				<small>Committed by <a :href="item.author.html_url">{{ item.commit.author.name }}</a></small> •
+	        	<span class="committer">
+					<small v-if="item.author">
+						Committed by <a :href="item.author.html_url">{{ item.commit.author.name }}</a>
+					</small>
+					<small v-else>
+						Committed by {{ item.commit.author.name }}
+					</small>
+	        	</span>
 		        <small>{{ item.commit.author.date | formatDate }}</small>
 		      </p>
 		    </div>
@@ -27,9 +36,8 @@
 </template>
 
 <script>
-module.exports = {
+export default {
 	name: 'github-commits',
-	props: ['repo', 'limit', 'branch'],
 	props: {
 	  repo: {
 	  	type: String,
@@ -99,9 +107,12 @@ module.exports = {
 @import 'assets/bulma.min.css'
 </style>
 
-<style scoped>
-#github-commits {
+<style>
+#vue-github-commits {
 	margin: 1rem;
+}
+#vue-github-commits .committer {
+	display: block;
 }
 .box:not(:last-child) {
   margin-bottom: 1rem;
@@ -114,5 +125,8 @@ module.exports = {
 }
 .commit-message a:hover {
   text-decoration: underline;
+}
+.commit-message p:not(:last-child) {
+  margin: 0;
 }
 </style>
