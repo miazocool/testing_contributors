@@ -3,13 +3,11 @@ import GithubCommits from './GithubCommits.vue'
 // Install the components
 export function install (Vue) {
   Vue.component('github-commits', GithubCommits)
-  /* -- Add more components here -- */
 }
 
 // Expose the components
 export {
   GithubCommits,
-  /* -- Add more components here -- */
 }
 
 /* -- Plugin definition & Auto-install -- */
