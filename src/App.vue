@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <github-commits repo="wzulfikar/lab"/>
+    <github-commits repo="wzulfikar/vue-github-commits"/>
   </div>
 </template>
 
